@@ -45,4 +45,18 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  document.getElementById("toggle-dark-mode").addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
+    // Save preference in localStorage
+    const isDark = document.body.classList.contains("dark-mode");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+
+  // On load, check and apply saved theme
+  window.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  });
 });
